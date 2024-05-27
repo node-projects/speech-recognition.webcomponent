@@ -3,7 +3,7 @@
 [![Published on npm](https://img.shields.io/npm/v/@node-projects/speech-recognition.webcomponent.svg?logo=npm)](https://www.npmjs.com/package/@node-projects/speech-recognition.webcomponent)
 
 # description
-a simple speech-recognition.webcomponet ..
+a simple speech-recognition.webcomponent ..
 
 # development
 ## upload new version

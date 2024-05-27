@@ -13,6 +13,7 @@ export class SpeechRecognitionWebcomponent extends BaseCustomWebComponentConstru
 
     //@ts-ignore
     private _recognition: SpeechRecognition;
+    private _lastStartedAt: number;
 
     public static properties = {
         autostart: Boolean,
@@ -43,6 +44,7 @@ export class SpeechRecognitionWebcomponent extends BaseCustomWebComponentConstru
 
     start() {
         this.init();
+        this._lastStartedAt = new Date().getTime();
         this._recognition.start();
     }
 
@@ -55,10 +57,10 @@ export class SpeechRecognitionWebcomponent extends BaseCustomWebComponentConstru
             speechRecognitionList.addFromString(grammar, 1);
             recognition.grammars = speechRecognitionList;
         }
-        recognition.continuous = true;
+        recognition.continuous = false;
         recognition.lang = this.lang;
-        //recognition.interimResults = false;
-        //recognition.maxAlternatives = 1;
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
 
         recognition.onresult = (e) => {
             this.text = e.results[0][0].transcript;
@@ -74,6 +76,18 @@ export class SpeechRecognitionWebcomponent extends BaseCustomWebComponentConstru
         }
 
         recognition.onerror = (e) => {
+        }
+
+        recognition.onend = () => {
+            let timeSinceLastStart = new Date().getTime() - this._lastStartedAt;
+            if (timeSinceLastStart > 1000) {
+                this._lastStartedAt = new Date().getTime();
+                setTimeout(() => {
+                    this._recognition.start();
+                }, 50);
+            } else {
+                console.log("too fast restart");
+            }
         }
 
         //@ts-ignore
