@@ -1,0 +1,83 @@
+{
+    "schemaVersion": "1.0.0",
+    "readme": "README.md",
+    "modules": [
+        {
+            "kind": "javascript-module",
+            "path": "dist/SpeechRecognition.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "name": "SpeechRecognitionWebcomponent",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "autostart",
+                            "type":  {
+                                "text": "boolean"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "text",
+                            "type":  {
+                                "text": "string"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "confidence",
+                            "type":  {
+                                "text": "number"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "grammar",
+                            "type":  {
+                                "text": "string[]"
+                            }
+                        }
+                    ],
+                    "attributes": [
+                        {
+                            "name": "autostart",
+                            "fieldName": "autostart"
+                        },
+                        {
+                            "name": "confidence",
+                            "fieldName": "confidence"
+                        },
+                        {
+                            "name": "grammar",
+                            "fieldName": "grammar"
+                        }
+                    ],
+                    "events": [
+                        {
+                            "name": "value-changed",
+                            "description": "raised when the value changes",
+                            "type": {
+                                "title": "string"
+                            }
+                        }
+                    ],
+                    "superclass": {
+                        "name": "BaseCustomWebComponentConstructorAppend"
+                    },
+                    "tagName": "node-projects-speech-recognition",
+                    "customElement": true
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "custom-element-definition",
+                    "name": "node-projects-speech-recognition",
+                    "declaration": {
+                        "name": "SpeechRecognitionWebcomponent"
+                    }
+                }
+            ]
+        }
+    ]
+}
